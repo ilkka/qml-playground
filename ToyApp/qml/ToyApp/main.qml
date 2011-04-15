@@ -4,8 +4,12 @@ import com.ilkka.TimeProvider 1.0
 Rectangle {
     width: 360
     height: 360
+    TimeProvider {
+        id: time
+    }
+
     Text {
-        text: "Hello World"
+        text: "Hello World at " + time.timeNow
         anchors.centerIn: parent
     }
     MouseArea {
