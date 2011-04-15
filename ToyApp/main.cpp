@@ -8,8 +8,9 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QDir pluginPath(app.applicationDirPath());
-    pluginPath.cdUp();
-    qDebug() << "Adding plugin path" << pluginPath;
+    pluginPath.mkdir("plugins");
+    pluginPath.cd("plugins");
+    qDebug() << "Adding plugin path" << pluginPath.path();
     app.addLibraryPath(pluginPath.path());
 
     QmlApplicationViewer viewer;
