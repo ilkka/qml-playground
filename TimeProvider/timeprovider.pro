@@ -15,7 +15,13 @@ HEADERS += \
     timeprovider_plugin.h \
     timeprovider.h
 
-OTHER_FILES = qmldir
+OTHER_FILES = qmldir \
+    qtc_packaging/debian_fremantle/rules \
+    qtc_packaging/debian_fremantle/README \
+    qtc_packaging/debian_fremantle/copyright \
+    qtc_packaging/debian_fremantle/control \
+    qtc_packaging/debian_fremantle/compat \
+    qtc_packaging/debian_fremantle/changelog
 
 !equals(_PRO_FILE_PWD_, $$OUT_PWD) {
     copy_qmldir.target = $$OUT_PWD/qmldir
@@ -34,4 +40,3 @@ symbian {
     target.path = $$installPath
     INSTALLS += target qmldir
 }
-
