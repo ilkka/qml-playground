@@ -3,13 +3,13 @@
 
 #include <QtDeclarative/QDeclarativeItem>
 #include <QPoint>
-#include <QVector2D>
+#include <QVector3D>
 
 class Particle : public QDeclarativeItem
 {
     Q_OBJECT
     Q_DISABLE_COPY(Particle)
-    Q_PROPERTY(QVector2D velocity READ getVelocity WRITE setVelocity NOTIFY velocityChanged)
+    Q_PROPERTY(QVector3D velocity READ getVelocity WRITE setVelocity NOTIFY velocityChanged)
 
 public:
     explicit Particle(QDeclarativeItem *parent = 0);
@@ -25,13 +25,13 @@ public:
      * Get the velocity of the particle.
      * @return the velocity of the particle.
      */
-    QVector2D getVelocity() const;
+    QVector3D getVelocity() const;
 
     /**
      * Set particle velocity.
      * @param vel the velocity.
      */
-    void setVelocity(const QVector2D& vel);
+    void setVelocity(const QVector3D& vel);
 
     /**
      * Cause particle to move according to the amount of time that passed.
@@ -43,7 +43,7 @@ signals:
     void velocityChanged();
 
 private:
-    QVector2D m_velocity;
+    QVector3D m_velocity;
 };
 
 QML_DECLARE_TYPE(Particle)

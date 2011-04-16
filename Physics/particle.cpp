@@ -5,7 +5,7 @@
 
 Particle::Particle(QDeclarativeItem *parent):
     QDeclarativeItem(parent),
-     m_velocity(0, 0)
+     m_velocity(0, 0, 0)
 {
     setFlag(ItemHasNoContents, false);
 }
@@ -21,12 +21,12 @@ void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->drawEllipse(pos(), 10, 10);
 }
 
-QVector2D Particle::getVelocity() const
+QVector3D Particle::getVelocity() const
 {
     return m_velocity;
 }
 
-void Particle::setVelocity(const QVector2D &vel)
+void Particle::setVelocity(const QVector3D &vel)
 {
     m_velocity = vel;
     emit velocityChanged();
@@ -34,7 +34,7 @@ void Particle::setVelocity(const QVector2D &vel)
 
 void Particle::move(qreal time_elapsed)
 {
-    QVector2D newpos(pos());
+    QVector3D newpos(pos());
     newpos += m_velocity * time_elapsed;
     setPos(newpos.toPointF());
 }
