@@ -38,7 +38,7 @@ void Particle::setVelocity(const QVector3D &vel)
 void Particle::move(qreal time_elapsed)
 {
     QVector3D newpos(pos());
-    newpos += m_velocity * time_elapsed;
+    newpos += m_velocity / (time_elapsed * 1000.0);
     setPos(newpos.toPointF());
     qDebug() << "New position" << newpos.toPointF();
 }
