@@ -40,13 +40,10 @@ void Particle::move(qreal time_elapsed)
     QVector3D newpos(pos());
     newpos += m_velocity * (time_elapsed / 1000.0);
     setX(newpos.x());
-    emit xChanged();
     setY(newpos.y());
-    emit yChanged();
-    update();
 }
 
 QRectF Particle::boundingRect() const
 {
-    return QRectF(-5, -5, 5, 5);
+    return QRectF(-5, -5, 10, 10);
 }
