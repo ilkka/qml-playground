@@ -31,6 +31,22 @@ Rectangle {
         color: "blue"
     }
 
+    Particle {
+        x: 324
+        y: 30
+        xvel: -10
+        yvel: 67
+        color: "green"
+    }
+
+    Particle {
+        x: 24
+        y: 320
+        xvel: 70
+        yvel: -5
+        color: "yellow"
+    }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
