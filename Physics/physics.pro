@@ -9,11 +9,13 @@ uri = physics
 # Input
 SOURCES += \
     physics_plugin.cpp \
-    particle.cpp
+    particle.cpp \
+    simulation.cpp
 
 HEADERS += \
     physics_plugin.h \
-    particle.h
+    particle.h \
+    simulation.h
 
 OTHER_FILES = qmldir \
     qtc_packaging/debian_fremantle/rules \
