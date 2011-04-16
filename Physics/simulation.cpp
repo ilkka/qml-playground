@@ -10,6 +10,7 @@ Simulation::Simulation(QDeclarativeItem *parent) :
     timer->setInterval(30);
     connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
     m_time.start();
+    setFlag(ItemHasNoContents, false);
 }
 
 void Simulation::tick()
