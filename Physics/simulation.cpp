@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <QBrush>
+#include <QDebug>
 
 #include "particle.h"
 
@@ -31,6 +32,10 @@ void Simulation::tick()
         Particle* p = qobject_cast<Particle*>(item);
         if (p != 0) {
             p->move(elapsed_secs);
+            QRectF bounds = p->boundingRect();
+            bounds.moveTo(p->pos());
+            qDebug() << "Scheduling update for" << bounds;
+            update(bounds);
         }
     }
     m_time.restart();
