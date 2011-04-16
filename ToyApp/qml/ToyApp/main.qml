@@ -2,9 +2,10 @@ import QtQuick 1.0
 import timeprovider 1.0
 import physics 1.0
 
-Simulation {
+Rectangle {
     width: 360
     height: 360
+
     TimeProvider {
         id: time
     }
@@ -21,9 +22,13 @@ Simulation {
         }
     }
 
-    Particle {
-        x: 50
-        y: 50
-        velocity: "1,-1,0"
+    Simulation {
+        anchors.fill: parent
+        Particle {
+            x: 50
+            y: 50
+            velocity: "1,-1,0"
+        }
     }
+
 }
