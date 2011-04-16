@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import com.ilkka.TimeProvider 1.0
+import timeprovider 1.0
 import physics 1.0
 
 Rectangle {
