@@ -25,6 +25,29 @@ function update() {
 }
 
 function collide(child) {
+    collide_from_particles(child);
+    collide_from_edges(child);
+}
+
+function collide_from_particles(child) {
+    for (var i = 0; i < world.children.length; ++i) {
+        var other = world.children[i];
+        if (other === child) {
+            continue;
+        }
+        var vector = { x: other.x - child.x, y: other.y - child.y };
+        var distance = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+        var normal = { x: vector.x / distance, y: vector.y / distance };
+        var overlap = distance - (child.radius + other.radius);
+        if (overlap < 0) {
+            // particle-particle collision
+            child.x += overlap * normal.x;
+            child.y += overlap * normal.y;
+        }
+    }
+}
+
+function collide_from_edges(child) {
     for (var i = 0; i < edges.length; ++i) {
         var edge = edges[i];
         var edgepixeldist = Math.max(world.width, world.height) * edge.distance / 2
