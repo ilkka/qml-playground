@@ -25,10 +25,23 @@ Rectangle {
     Simulation {
         anchors.fill: parent
         Particle {
+            id: p1
             x: 50
             y: 50
-            velocity: "1,-1,0"
+            velocity: "0.01,-0.01,0"
+        }
+
+        Particle {
+            id: p2
+            x: 100
+            y: 100
+            velocity: "-0.03,0.03,0"
         }
     }
 
+    Text {
+        anchors.bottom: parent.bottom
+        text: "le fú"
+        x: p1.x
+    }
 }
