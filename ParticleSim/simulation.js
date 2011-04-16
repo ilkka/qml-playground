@@ -43,6 +43,13 @@ function collide_from_particles(child) {
             // particle-particle collision
             child.x += overlap * normal.x;
             child.y += overlap * normal.y;
+            var vrelative = { x: child.xvel - other.xvel, y: child.yvel - other.yvel };
+            var vrel_dot_nor = vrelative.x * normal.x + vrelative.y * normal.y;
+            var impulse = { x: normal.x * vrel_dot_nor, y: normal.y * vrel_dot_nor };
+            child.xvel -= impulse.x;
+            child.yvel -= impulse.y;
+            other.xvel += impulse.x;
+            other.yvel += impulse.y;
         }
     }
 }
