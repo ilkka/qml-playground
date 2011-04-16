@@ -4,7 +4,7 @@
 
 Simulation::Simulation(QDeclarativeItem *parent) :
     QDeclarativeItem(parent),
-    m_time()
+    m_time(), m_width(0), m_height(0)
 {
     QTimer* timer = new QTimer(this);
     timer->setInterval(30);
@@ -23,4 +23,30 @@ void Simulation::tick()
         }
     }
     m_time.restart();
+}
+
+void Simulation::setWidth(qreal width)
+{
+    if (width != m_width) {
+        m_width = width;
+        emit widthChanged();
+    }
+}
+
+qreal Simulation::width() const
+{
+    return m_width;
+}
+
+void Simulation::setHeight(qreal height)
+{
+    if (height != m_height) {
+        m_height = height;
+        emit heightChanged();
+    }
+}
+
+qreal Simulation::height() const
+{
+    return m_height;
 }
