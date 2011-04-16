@@ -9,7 +9,6 @@ class Particle : public QDeclarativeItem
 {
     Q_OBJECT
     Q_DISABLE_COPY(Particle)
-    Q_PROPERTY(QVector2D position READ getPosition WRITE setPosition NOTIFY positionChanged)
     Q_PROPERTY(QVector2D velocity READ getVelocity WRITE setVelocity NOTIFY velocityChanged)
 
 public:
@@ -21,18 +20,6 @@ public:
      * @overload QDeclarativeItem::paint().
      */
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0);
-
-    /**
-     * Get the particle position.
-     * @return the position of the particle.
-     */
-    QVector2D getPosition() const;
-
-    /**
-     * Set particle position.
-     * @param pos the position.
-     */
-    void setPosition(const QVector2D& pos);
 
     /**
      * Get the velocity of the particle.
@@ -53,11 +40,9 @@ public:
     void move(qreal time_elapsed);
 
 signals:
-    void positionChanged();
     void velocityChanged();
 
 private:
-    QVector2D m_position;
     QVector2D m_velocity;
 };
 
