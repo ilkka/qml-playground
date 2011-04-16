@@ -2,6 +2,7 @@
 
 #include <QtDeclarative/qdeclarative.h>
 #include <QPainter>
+#include <QDebug>
 
 Particle::Particle(QDeclarativeItem *parent):
     QDeclarativeItem(parent),
@@ -28,8 +29,10 @@ QVector3D Particle::getVelocity() const
 
 void Particle::setVelocity(const QVector3D &vel)
 {
-    m_velocity = vel;
-    emit velocityChanged();
+    if (m_velocity != vel) {
+        m_velocity = vel;
+        emit velocityChanged();
+    }
 }
 
 void Particle::move(qreal time_elapsed)
@@ -37,4 +40,5 @@ void Particle::move(qreal time_elapsed)
     QVector3D newpos(pos());
     newpos += m_velocity * time_elapsed;
     setPos(newpos.toPointF());
+    qDebug() << "New position" << newpos.toPointF();
 }
