@@ -19,7 +19,7 @@ void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 {
     painter->setPen(Qt::black);
     painter->setBrush(QBrush(Qt::black));
-    painter->drawEllipse(pos(), 10, 10);
+    painter->drawEllipse(x(), y(), 10, 10);
 }
 
 QVector3D Particle::getVelocity() const
@@ -38,7 +38,15 @@ void Particle::setVelocity(const QVector3D &vel)
 void Particle::move(qreal time_elapsed)
 {
     QVector3D newpos(pos());
-    newpos += m_velocity / (time_elapsed * 1000.0);
-    setPos(newpos.toPointF());
-    qDebug() << "New position" << newpos.toPointF();
+    newpos += m_velocity * (time_elapsed / 1000.0);
+    setX(newpos.x());
+    emit xChanged();
+    setY(newpos.y());
+    emit yChanged();
+    update();
+}
+
+QRectF Particle::boundingRect() const
+{
+    return QRectF(-5, -5, 5, 5);
 }

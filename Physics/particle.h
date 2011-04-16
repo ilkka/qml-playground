@@ -22,6 +22,11 @@ public:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0);
 
     /**
+     * @overload QGraphicsItem::boundingRect().
+     */
+    QRectF boundingRect() const;
+
+    /**
      * Get the velocity of the particle.
      * @return the velocity of the particle.
      */
