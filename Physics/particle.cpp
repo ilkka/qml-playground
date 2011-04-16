@@ -17,7 +17,9 @@ Particle::~Particle()
 
 void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-
+    painter->setPen(QColor::black());
+    painter->setBrush(QBrush(QColor::black()));
+    painter->drawEllipse(m_position.toPoint(), 10, 10);
 }
 
 QVector2D Particle::getPosition() const
