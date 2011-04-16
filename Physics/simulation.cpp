@@ -1,5 +1,9 @@
 #include "simulation.h"
+
 #include <QTimer>
+#include <QPainter>
+#include <QBrush>
+
 #include "particle.h"
 
 Simulation::Simulation(QDeclarativeItem *parent) :
@@ -11,6 +15,12 @@ Simulation::Simulation(QDeclarativeItem *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
     m_time.start();
     setFlag(ItemHasNoContents, false);
+}
+
+void Simulation::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+{
+    painter->setBrush(QBrush(Qt::white));
+    painter->drawRect(QRect(pos().toPoint(), QSize(m_width, m_height)));
 }
 
 void Simulation::tick()

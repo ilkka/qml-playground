@@ -17,6 +17,8 @@ public:
     qreal height() const;
     void setHeight(qreal height);
 
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* options, QWidget* widget = 0);
+
 signals:
     void widthChanged();
     void heightChanged();
