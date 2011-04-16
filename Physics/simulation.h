@@ -2,6 +2,7 @@
 #define SIMULATION_H
 
 #include <QDeclarativeItem>
+#include <QTime>
 
 class Simulation : public QDeclarativeItem
 {
@@ -11,8 +12,11 @@ public:
 
 signals:
 
-public slots:
+private slots:
+    void tick();
 
+private:
+    QTime m_time;
 };
 
 QML_DECLARE_TYPE(Simulation)
