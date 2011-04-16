@@ -13,6 +13,7 @@ Simulation::Simulation(QDeclarativeItem *parent) :
     QTimer* timer = new QTimer(this);
     timer->setInterval(30);
     connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
+    timer->start();
     m_time.start();
     setFlag(ItemHasNoContents, false);
 }
