@@ -1,5 +1,6 @@
 import QtQuick 1.0
 import com.ilkka.TimeProvider 1.0
+import physics 1.0
 
 Rectangle {
     width: 360
@@ -12,10 +13,16 @@ Rectangle {
         text: "Hello World at " + time.timeNow
         anchors.centerIn: parent
     }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
             Qt.quit();
         }
+    }
+
+    Particle {
+        x: 50
+        y: 50
     }
 }
