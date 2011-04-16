@@ -31,7 +31,7 @@ function collide(child) {
         // convert the coordinates such that the origin is in the center
         // of the world, it's easier to calculate the distance this way
         var dotproduct = (child.x - world.width/2) * edge.normal.x + (child.y - world.height/2) * edge.normal.y
-        var distance = dotproduct + edgepixeldist;
+        var distance = dotproduct + edgepixeldist - child.radius;
         if (distance < 0) {
             // collision
             var dotvel = child.xvel * edge.normal.x + child.yvel * edge.normal.y
