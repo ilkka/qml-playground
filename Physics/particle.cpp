@@ -3,10 +3,10 @@
 #include <QtDeclarative/qdeclarative.h>
 #include <QPainter>
 
-Particle::Particle(QVector2D position, QVector2D velocity, QDeclarativeItem *parent):
+Particle::Particle(QDeclarativeItem *parent):
     QDeclarativeItem(parent),
-    m_position(position),
-    m_velocity(velocity)
+    m_position(0, 0),
+    m_velocity(0, 0)
 {
     setFlag(ItemHasNoContents, false);
 }
@@ -27,9 +27,21 @@ QVector2D Particle::getPosition() const
     return m_position;
 }
 
+void Particle::setPosition(const QVector2D &pos)
+{
+    m_position = pos;
+    emit positionChanged();
+}
+
 QVector2D Particle::getVelocity() const
 {
     return m_velocity;
+}
+
+void Particle::setVelocity(const QVector2D &vel)
+{
+    m_velocity = vel;
+    emit velocityChanged();
 }
 
 void Particle::move(qreal time_elapsed)

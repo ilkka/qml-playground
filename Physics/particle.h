@@ -9,11 +9,11 @@ class Particle : public QDeclarativeItem
 {
     Q_OBJECT
     Q_DISABLE_COPY(Particle)
-    Q_PROPERTY(QVector2D position READ getPosition NOTIFY positionChanged)
-    Q_PROPERTY(QVector2D velocity READ getVelocity NOTIFY velocityChanged)
+    Q_PROPERTY(QVector2D position READ getPosition WRITE setPosition NOTIFY positionChanged)
+    Q_PROPERTY(QVector2D velocity READ getVelocity WRITE setVelocity NOTIFY velocityChanged)
 
 public:
-    Particle(QVector2D position, QVector2D velocity, QDeclarativeItem *parent = 0);
+    explicit Particle(QDeclarativeItem *parent = 0);
     ~Particle();
 
     /**
@@ -29,10 +29,22 @@ public:
     QVector2D getPosition() const;
 
     /**
+     * Set particle position.
+     * @param pos the position.
+     */
+    void setPosition(const QVector2D& pos);
+
+    /**
      * Get the velocity of the particle.
      * @return the velocity of the particle.
      */
     QVector2D getVelocity() const;
+
+    /**
+     * Set particle velocity.
+     * @param vel the velocity.
+     */
+    void setVelocity(const QVector2D& vel);
 
     /**
      * Cause particle to move according to the amount of time that passed.
