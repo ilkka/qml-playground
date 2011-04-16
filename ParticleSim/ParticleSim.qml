@@ -16,12 +16,19 @@ Rectangle {
     }
 
     Particle {
-        id: p1
         x: 50
         y: 50
         xvel: 50
         yvel: 50
         color: "red"
+    }
+
+    Particle {
+        x: 244
+        y: 125
+        xvel: -86
+        yvel: -35
+        color: "blue"
     }
 
     MouseArea {
