@@ -11,6 +11,36 @@ var edges = [
         { normal: { x: 0, y: 1 }, distance: 1 }
     ]
 
+var particle_component;
+
+function initialize() {
+    particle_component = Qt.createComponent("Particle.qml");
+}
+
+function create_random_particles(count) {
+    for (var i = 0; i < count; ++i) {
+        if (particle_component.status === Component.Ready) {
+            create_random_particle();
+        } else {
+            particle_component.statusChanged.connect(create_random_particle);
+        }
+    }
+}
+
+function create_random_particle() {
+    if (particle_component.status === Component.Ready) {
+        var particle = particle_component.createObject(world);
+        if (particle === null) {
+            console.log("Error creating object");
+        }
+        particle.x = random_world_coordinate();
+        particle.y = random_world_coordinate();
+        console.log("Created particle at", particle.x, ",", particle.y);
+    } else {
+        console.log("Error loading component:", particle_component.errorString());
+    }
+}
+
 function update() {
     var now = new Date();
     var elapsed = now - lastUpdate;
@@ -74,4 +104,8 @@ function collide_from_edges(child) {
             child.y += distance * edge.normal.y;
         }
     }
+}
+
+function random_world_coordinate() {
+    return Math.floor(Math.random() * world.width);
 }
