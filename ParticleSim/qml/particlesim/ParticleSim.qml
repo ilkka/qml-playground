@@ -29,10 +29,49 @@ Rectangle {
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
+    Column {
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.margins: 5
+
+        Rectangle {
+            id: addbutton
+            color: "grey"
+            border.color: "darkGrey"
+            border.width: 2
+            width: addbutton_label.paintedWidth + 20
+            height: addbutton_label.paintedHeight + 10
+
+            Text {
+                id: addbutton_label
+                text: "Add particle"
+                anchors.centerIn: parent
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Simulation.create_random_particle();
+            }
+        }
+
+        Rectangle {
+            id: quitbutton
+            color: "grey"
+            border.color: "darkGrey"
+            border.width: 2
+            width: quitbutton_label.paintedWidth + 20
+            height: quitbutton_label.paintedHeight + 10
+
+            Text {
+                id: quitbutton_label
+                text: "Quit"
+                anchors.centerIn: parent
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Qt.quit();
+            }
         }
     }
 }
