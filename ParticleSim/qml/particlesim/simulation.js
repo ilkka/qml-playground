@@ -35,6 +35,8 @@ function create_random_particle() {
         }
         particle.x = random_world_coordinate();
         particle.y = random_world_coordinate();
+        particle.xvel = random_velocity_component();
+        particle.yvel = random_velocity_component();
         console.log("Created particle at", particle.x, ",", particle.y);
     } else {
         console.log("Error loading component:", particle_component.errorString());
@@ -108,4 +110,8 @@ function collide_from_edges(child) {
 
 function random_world_coordinate() {
     return Math.floor(Math.random() * world.width);
+}
+
+function random_velocity_component() {
+    return Math.floor(Math.random() * ((world.width + world.height)/2)/2);
 }
