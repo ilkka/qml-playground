@@ -37,6 +37,7 @@ function create_random_particle() {
         particle.y = random_world_coordinate();
         particle.xvel = random_velocity_component();
         particle.yvel = random_velocity_component();
+        particle.color = random_color();
         console.log("Created particle at", particle.x, ",", particle.y);
     } else {
         console.log("Error loading component:", particle_component.errorString());
@@ -114,4 +115,8 @@ function random_world_coordinate() {
 
 function random_velocity_component() {
     return Math.floor(Math.random() * ((world.width + world.height)/2)/2);
+}
+
+function random_color() {
+    return Qt.rgba(Math.random(), Math.random(), Math.random(), 1.0);
 }
