@@ -14,7 +14,7 @@ var edges = [
 var particle_component;
 
 function initialize() {
-    particle_component = Qt.createComponent("Particle.qml");
+    //particle_component = Qt.createComponent("Particle.qml");
 }
 
 function create_random_particles(count) {
@@ -28,20 +28,13 @@ function create_random_particles(count) {
 }
 
 function create_random_particle() {
-    if (particle_component.status === Component.Ready) {
-        var particle = particle_component.createObject(world);
-        if (particle === null) {
-            console.log("Error creating object");
-        }
-        particle.x = random_world_coordinate();
-        particle.y = random_world_coordinate();
-        particle.xvel = random_velocity_component();
-        particle.yvel = random_velocity_component();
-        particle.color = random_color();
-        console.log("Created particle at", particle.x, ",", particle.y);
-    } else {
-        console.log("Error loading component:", particle_component.errorString());
-    }
+    var particle = Qt.createQmlObject('import Physics 1.0; Particle { }');
+    particle.x = random_world_coordinate();
+    particle.y = random_world_coordinate();
+    particle.xvel = random_velocity_component();
+    particle.yvel = random_velocity_component();
+    particle.color = random_color();
+    console.log("Created particle at", particle.x, ",", particle.y);
 }
 
 function update() {

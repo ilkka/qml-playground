@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     // register custom types
-    qmlRegisterType<Particle>("Physics", 1, 0, "ParticleImpl");
+    qmlRegisterType<Particle>("Physics", 1, 0, "Particle");
 
     QmlApplicationViewer viewer;
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
