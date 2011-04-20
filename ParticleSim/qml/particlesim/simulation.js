@@ -41,6 +41,8 @@ function update() {
         if (child.move !== undefined) {
             child.move(elapsed);
             collide(child);
+        } else {
+            console.log("Child", child, "doesn't support move");
         }
     }
     lastUpdate = now;
