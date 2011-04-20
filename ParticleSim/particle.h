@@ -16,7 +16,7 @@ public:
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    void move(qreal time_elapsed);
+    Q_INVOKABLE void move(qreal time_elapsed);
 
     // getters
     qreal xvel() const { return m_xvel; }
