@@ -1,4 +1,5 @@
 import QtQuick 1.0
+import Physics 1.0
 import "simulation.js" as Simulation
 
 Rectangle {
@@ -23,9 +24,18 @@ Rectangle {
             onTriggered: { Simulation.update(); }
         }
 
+        Particle {
+            x: 143
+            y: 43
+            xvel: -50
+            yvel: 96
+            color: "green"
+            radius: 20
+        }
+
         Component.onCompleted: {
             Simulation.initialize();
-            Simulation.create_random_particles(5);
+            //Simulation.create_random_particles(5);
         }
     }
 
