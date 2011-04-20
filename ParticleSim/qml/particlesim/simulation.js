@@ -11,7 +11,7 @@ var edges = [
         { normal: { x: 0, y: 1 }, distance: 1 }
     ]
 
-var particle_component;
+var particle_counter = 1;
 
 function initialize() {
     //particle_component = Qt.createComponent("Particle.qml");
@@ -19,16 +19,12 @@ function initialize() {
 
 function create_random_particles(count) {
     for (var i = 0; i < count; ++i) {
-        if (particle_component.status === Component.Ready) {
-            create_random_particle();
-        } else {
-            particle_component.statusChanged.connect(create_random_particle);
-        }
+        create_random_particle();
     }
 }
 
 function create_random_particle() {
-    var particle = Qt.createQmlObject('import Physics 1.0; Particle { }');
+    var particle = Qt.createQmlObject('import Physics 1.0; Particle { }', world, "randomParticle" + particle_counter++);
     particle.x = random_world_coordinate();
     particle.y = random_world_coordinate();
     particle.xvel = random_velocity_component();
