@@ -39,7 +39,7 @@ function update() {
     for (var i = 0; i < world.children.length; ++i) {
         var child = world.children[i];
         if (child.move !== undefined) {
-            child.move(elapsed);
+            child.move(elapsed / 1000.0);
             collide(child);
         } else {
             console.log("Child", child, "doesn't support move");
