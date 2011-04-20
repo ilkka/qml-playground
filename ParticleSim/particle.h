@@ -63,4 +63,6 @@ private:
     QColor m_color;
 };
 
+QML_DECLARE_TYPE(Particle)
+
 #endif // PARTICLE_H
