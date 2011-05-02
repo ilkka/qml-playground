@@ -57,6 +57,8 @@ signals:
     void colorChanged();
 
 private:
+    Q_DISABLE_COPY(Particle);
+
     qreal m_xvel;
     qreal m_yvel;
     qreal m_radius;
