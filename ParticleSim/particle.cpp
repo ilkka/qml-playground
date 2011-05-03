@@ -14,7 +14,6 @@ Particle::Particle(QDeclarativeItem *parent) :
 
 void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem */*option*/, QWidget */*widget*/)
 {
-    qDebug() << "Painting particle at" << x() << "," << y();
     QBrush brush(m_color);
     QPen pen(m_color);
     pen.setWidth(1);
@@ -30,6 +29,5 @@ void Particle::move(qreal time_elapsed)
 {
     setX(x() + m_xvel * time_elapsed);
     setY(y() + m_yvel * time_elapsed);
-    qDebug() << "Moved to " << x() << "," << y();
     update();
 }
