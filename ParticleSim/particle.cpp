@@ -7,7 +7,7 @@
 
 Particle::Particle(QDeclarativeItem *parent) :
     QDeclarativeItem(parent),
-    m_xvel(0), m_yvel(0), m_radius(10), m_color(QColor::fromRgb(0, 0, 0))
+    m_xvel(0), m_yvel(0), m_radius(10), m_color(QColor::fromRgb(0, 0, 0)), m_penwidth(1.0)
 {
     setFlag(QGraphicsItem::ItemHasNoContents, false);
 }
@@ -16,7 +16,7 @@ void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem */*option
 {
     QBrush brush(m_color);
     QPen pen(m_color);
-    pen.setWidth(1);
+    pen.setWidth(m_penwidth);
     painter->setPen(pen);
     painter->setBrush(brush);
     if (smooth()) {

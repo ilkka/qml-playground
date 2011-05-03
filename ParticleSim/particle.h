@@ -64,6 +64,7 @@ private:
     qreal m_yvel;
     qreal m_radius;
     QColor m_color;
+    qreal m_penwidth;
 };
 
 QML_DECLARE_TYPE(Particle)
