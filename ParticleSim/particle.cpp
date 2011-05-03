@@ -27,7 +27,6 @@ void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem */*option
 
 void Particle::move(qreal time_elapsed)
 {
-    setX(x() + m_xvel * time_elapsed);
-    setY(y() + m_yvel * time_elapsed);
+    moveBy(m_xvel * time_elapsed, m_yvel * time_elapsed);
     update();
 }
