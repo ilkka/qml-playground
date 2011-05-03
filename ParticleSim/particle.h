@@ -40,6 +40,7 @@ public:
     void setRadius(qreal radius) {
         if (!qFuzzyCompare(radius, m_radius)) {
             m_radius = radius;
+            prepareGeometryChange();
             emit radiusChanged();
         }
     }
