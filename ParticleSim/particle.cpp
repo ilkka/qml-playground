@@ -30,3 +30,9 @@ void Particle::move(qreal time_elapsed)
     moveBy(m_xvel * time_elapsed, m_yvel * time_elapsed);
     update();
 }
+
+QRectF Particle::boundingRect() const
+{
+    return QRectF(-m_radius - m_penwidth / 2.0, -m_radius - m_penwidth / 2.0,
+                  (2.0 * m_radius) + m_penwidth, (2.0 * m_radius) + m_penwidth);
+}

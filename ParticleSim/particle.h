@@ -51,6 +51,9 @@ public:
         }
     }
 
+    // Override boundingRect
+    QRectF boundingRect() const;
+
 signals:
     void xvelChanged();
     void yvelChanged();
