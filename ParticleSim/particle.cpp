@@ -22,7 +22,7 @@ void Particle::paint(QPainter *painter, const QStyleOptionGraphicsItem */*option
     if (smooth()) {
         painter->setRenderHint(QPainter::Antialiasing, true);
     }
-    painter->drawEllipse(x(), y(), m_radius, m_radius);
+    painter->drawEllipse(QPointF(0, 0), m_radius, m_radius);
 }
 
 void Particle::move(qreal time_elapsed)
